@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  const name = "FW.ZN";
+  const name = "schxkl";
   let nameText = '';
   let nameIndex = 0;
   let isNameDeleting = false;
