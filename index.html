@@ -1,159 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>fw.zn/zen Profile</title>
-  <style>
-    /* (Keep all your original styles here unchanged) */
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Retro+Gaming&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0A0A1A">
+    <title>fw.zn/zen</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="home-theme" onload="initMedia()">
-  <div class="custom-cursor"></div>
 
-  <div id="start-screen">
-    <div id="start-text"></div>
-  </div>
+<body class="home-theme">
 
-  <div class="container">
-    <video id="background" autoplay loop muted playsinline webkit-playsinline>
-      <source src="assets/background.mp4" type="video/mp4">
-    </video>
-    <div class="glitch-overlay"></div>
-    <div id="hacker-overlay" class="hidden"></div>
-    <div id="snow-overlay" class="hidden"></div>
-
-    <div id="profile-block">
-      <div class="profile-header">
-        <div class="profile-container">
-          <img src="https://i.pinimg.com/736x/04/4a/8c/044a8cdec85878de9958c9586b415ccf.jpg"
-               alt="Profile" class="profile-picture">
+    <div id="profile-block" class="profile-container">
+        <div class="profile-picture">
+            <img src="https://i.pinimg.com/736x/04/4a/8c/044a8cdec85878de9958c9586b415ccf.jpg" alt="Profile Picture">
         </div>
-        <div class="profile-info">
-          <div class="name-and-badges">
-            <div id="profile-name">fw.zn/zen</div>
-            <!-- Badges preserved as per original -->
-            <div class="badge-box">
-              <div class="badge-box-inner">
-                <div class="badge-group">
-                  <!-- existing badges -->
-                  <div class="badge-container">
-                    <img src="assets/staff.gif" alt="Staff" class="badge">
-                    <span class="tooltip">Staff Member</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/owner.gif" alt="Owner" class="badge">
-                    <span class="tooltip">Owner</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/partner.gif" alt="Partner" class="badge">
-                    <span class="tooltip">Partner</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/developer.png" alt="Developer" class="badge">
-                    <span class="tooltip">Developer</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/bug_bounty.gif" alt="Bug Bounty" class="badge">
-                    <span class="tooltip">Bug Bounty</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/hated_guns.gif" alt="Hated by Guns.lol" class="badge">
-                    <span class="tooltip">Hated by Guns.lol</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/hated_fakecrime.gif" alt="Hated by Fakecrime.bio" class="badge">
-                    <span class="tooltip">Hated by Fakecrime.bio</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/verified.gif" alt="Verified" class="badge">
-                    <span class="tooltip">Verified</span>
-                  </div>
-                  <div class="badge-container">
-                    <img src="assets/rule_maker.gif" alt="Rule Maker" class="badge">
-                    <span class="tooltip">Rule Maker</span>
-                  </div>
-                </div>
-              </div>
+        <h1 id="profile-name" class="name-gradient">fw.zn/zen</h1>
+        <p id="profile-bio">Your bio goes here...</p>
+        
+        <div class="badge-group">
+            <div class="badge-container">
+                <img src="badge1.png" alt="Badge 1" class="badge">
             </div>
-          </div>
-          <div id="profile-bio"></div>
+            <div class="badge-container">
+                <img src="badge2.png" alt="Badge 2" class="badge">
+            </div>
         </div>
-      </div>
 
-      <div class="bio-separator"></div>
-
-      <div class="profile-footer">
         <div class="social-links">
-          <a href="https://discord.gg/dVVqDgmpug" target="_blank">
-            <img src="assets/discord.png" alt="Discord" class="social-icon">
-          </a>
-          <a href="https://github.com/zennss" target="_blank">
-            <img src="assets/github.png" alt="GitHub" class="social-icon">
-          </a>
-          <a href="https://www.youtube.com/@fw-zn" target="_blank">
-            <img src="assets/youtube.png" alt="YouTube" class="social-icon">
-          </a>
-          <a href="https://fw0zen.carrd.co/" target="_blank">
-            <img src="assets/carrd.png" alt="Carrd" class="social-icon">
-          </a>
-          <a href="https://open.spotify.com/user/4qnxra5id5vlqatolq26ufh4c" target="_blank">
-            <img src="assets/spotify.png" alt="Spotify" class="social-icon">
-          </a>
-          <a href="https://pinterest.com/midnightbssyt/" target="_blank">
-            <img src="assets/pinterest.png" alt="Pinterest" class="social-icon">
-          </a>
-          <a href="https://tiktok.com/zencc1" target="_blank">
-            <img src="assets/tiktok.png" alt="TikTok" class="social-icon">
-          </a>
+            <a href="https://discord.gg/dVVqDgmpug" class="social-icon">
+                <img src="discord-icon.png" alt="Discord">
+            </a>
+            <a href="https://github.com/zennss" class="social-icon">
+                <img src="github-icon.png" alt="GitHub">
+            </a>
+            <a href="https://www.youtube.com/@fw-zn" class="social-icon">
+                <img src="youtube-icon.png" alt="YouTube">
+            </a>
+            <a href="https://fw0zen.carrd.co/" class="social-icon">
+                <img src="carrd-icon.png" alt="Carrd">
+            </a>
+            <a href="https://open.spotify.com/user/4qnxra5id5vlqatolq26ufh4c" class="social-icon">
+                <img src="spotify-icon.png" alt="Spotify">
+            </a>
+            <a href="https://pinterest.com/midnightbssyt/" class="social-icon">
+                <img src="pinterest-icon.png" alt="Pinterest">
+            </a>
+            <a href="https://tiktok.com/zencc1" class="social-icon">
+                <img src="tiktok-icon.png" alt="TikTok">
+            </a>
         </div>
-        <div class="visitor-counter">
-          <svg class="visitor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0
-                     8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477
-                     0-8.268-2.943-9.542-7z"/>
-          </svg>
-          <span id="visitor-count">21234</span>
-          <span class="tooltip">Profile Views</span>
-        </div>
-      </div>
     </div>
 
-    <div id="skills-block" class="hidden">
-      <h2 class="skills-title">Programming Skills</h2>
-      <div class="skill">
-        <div class="skill-name">
-          <img src="assets/python.png" alt="Python" class="skill-icon">
-          <span>Python</span>
-          <span>87%</span>
-        </div>
-        <div class="skill-bar-container"><div id="python-bar" class="skill-bar"></div></div>
-      </div>
-      <div class="skill">
-        <div class="skill-name">
-          <img src="assets/cpp.png" alt="C++" class="skill-icon">
-          <span>C++</span>
-          <span>75%</span>
-        </div>
-        <div class="skill-bar-container"><div id="cpp-bar" class="skill-bar"></div></div>
-      </div>
-      <div class="skill">
-        <div class="skill-name">
-          <img src="assets/csharp.png" alt="C#" class="skill-icon">
-          <span>C#</span>
-          <span>80%</span>
-        </div>
-        <div class="skill-bar-container"><div id="csharp-bar" class="skill-bar"></div></div>
-      </div>
+    <div class="controls">
+        <div id="home-theme" class="theme-button">H</div>
+        <div id="hacker-theme" class="theme-button">H</div>
+        <div id="rain-theme" class="theme-button">R</div>
+        <div id="anime-theme" class="theme-button">A</div>
+        <div id="car-theme" class="theme-button">C</div>
     </div>
 
-    <!-- controls, audio, scripts remain unchanged -->
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
