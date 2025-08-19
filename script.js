@@ -64,25 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const touch = e.touches[0];
       cursor.style.left = touch.clientX + 'px';
       cursor.style.top = touch.clientY + 'px';
-      cursor.style.display = 'block';
+      cursor.style.display = 'show';
     });
 
     document.addEventListener('touchmove', (e) => {
       const touch = e.touches[0];
       cursor.style.left = touch.clientX + 'px';
       cursor.style.top = touch.clientY + 'px';
-      cursor.style.display = 'block';
+      cursor.style.display = 'show';
     });
 
     document.addEventListener('touchend', () => {
-      cursor.style.display = 'none'; 
+      cursor.style.display = 'show'; 
     });
   } else {
 
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
-      cursor.style.display = 'block';
+      cursor.style.display = 'show';
     });
 
     document.addEventListener('mousedown', () => {
