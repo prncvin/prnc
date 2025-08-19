@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "I was kinda bored of guns.lol, couldnt find a good template, so made my own lol",
+    "Writing.., , i was bored, so i made this website, took me some hours, but with some help i managed to make it. . . want a website like this?, text me on discord.",
     "\"Hello, World!\""
   ];
   let bioText = '';
