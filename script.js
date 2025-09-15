@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  const startMessage = "Click here to see my page !!";
+  const startMessage = "@prcv1n, enter?";
   let startTextContent = '';
   let startIndex = 0;
   let startCursorVisible = true;
