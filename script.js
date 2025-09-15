@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "Want a website like this? Dm me on discord, $10/nitro/rbx/btc",
+    "want a custom website? contact me on discord, @prcv1n. (Not for free)",
     "\"Hello, World!\""
   ];
   let bioText = '';
