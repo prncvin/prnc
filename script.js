@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "guns.lol nd fakecrime is buns, just make one urself",
+    "@prcv1n, on almost every social. Updating this page a lot, expect changes daily",
     "\"Hello, World!\""
   ];
   let bioText = '';
