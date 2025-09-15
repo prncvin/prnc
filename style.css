@@ -1,88 +1,401 @@
 :root {
-  --primary-color: #fff;
-  --secondary-color: #000;
-  --background-dark: #000;
-  --text-color: #fff;
+  --primary-color: #00CED1;
+  --secondary-color: #FF6B9E;
+  --background-dark: #0A0A1A;
+  --text-color: #E0E0FF;
 }
 
-/* Basic reset */
+/* ======================
+   Reset & Body
+   ====================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 body {
   font-family: 'Space Mono', monospace;
   background: var(--background-dark);
   color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1000px;
+  cursor: none;
 }
 
-/* Main content */
-#main-content h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+/* ======================
+   Custom Cursor
+   ====================== */
+.custom-cursor {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  background: url('assets/custom_cursor.png') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.1s ease-out;
+  filter: hue-rotate(var(--cursor-hue, 0deg));
 }
 
-#main-content p {
-  margin-bottom: 20px;
-  font-size: 1rem;
+/* ======================
+   Themes
+   ====================== */
+body.home-theme {
+  --primary-color: #00CED1;
+  --secondary-color: #FF6B9E;
+  --cursor-hue: 180deg;
 }
 
-/* Buttons */
-button {
-  padding: 10px 20px;
-  background: var(--text-color);
-  color: var(--background-dark);
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+body.hacker-theme {
+  --primary-color: #22C55E;
+  --secondary-color: #2DD4BF;
+  --cursor-hue: 120deg;
 }
 
-button:hover {
+body.rain-theme {
+  --primary-color: #1E3A8A;
+  --secondary-color: #2563EB;
+  --cursor-hue: 240deg;
+}
+
+body.anime-theme {
+  --primary-color: #DC2626;
+  --secondary-color: #F87171;
+  --cursor-hue: 0deg;
+}
+
+body.car-theme {
+  --primary-color: #EAB308;
+  --secondary-color: #FACC15;
+  --cursor-hue: 60deg;
+}
+
+body.bw-theme {
+  --primary-color: #fff;
+  --secondary-color: #000;
+  --background-dark: #000;
+  --text-color: #fff;
+  --cursor-hue: 0deg;
+}
+
+/* ======================
+   Video & Overlays
+   ====================== */
+.video-background {
+  transform: scale(1.02);
+}
+
+#hacker-overlay {
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+#snow-overlay {
+  z-index: 15;
   opacity: 0.8;
 }
 
-/* Message Popup */
+.glitch-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  opacity: 0;
+  z-index: 20;
+  mix-blend-mode: color-dodge;
+}
+
+/* ======================
+   Profile & Skills
+   ====================== */
+#profile-block, #skills-block {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-out, background 0.3s ease, border-opacity 0.3s ease, backdrop-filter 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+  width: 640px;
+  max-width: 90vw;
+}
+
+#profile-block.profile-appear {
+  animation: slideInFade 1s ease-out forwards;
+}
+
+@keyframes slideInFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ======================
+   Profile Container Orbit
+   ====================== */
+.profile-container {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.profile-container::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 10px 10px, var(--primary-color) 15%, transparent 25%);
+  animation: orbit 3s linear infinite;
+  z-index: -1;
+  filter: blur(2px);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.profile-container.fast-orbit::after {
+  animation: fast-orbit 0.5s linear forwards;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fast-orbit {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ======================
+   Social Links
+   ====================== */
+.social-links {
+  display: flex;
+  gap: 12px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 20px;
+  padding: 8px 12px;
+  backdrop-filter: blur(5px);
+}
+
+.social-icon {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  pointer-events: auto;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover,
+.social-icon:active { transform: scale(1.4) rotateY(15deg); }
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, var(--primary-color), var(--secondary-color));
+  transform-origin: bottom right;
+  animation: shine 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.social-icon:hover::before,
+.social-icon:active::before { opacity: 0.3; }
+
+@keyframes shine {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ======================
+   Cursor Trail
+   ====================== */
+.cursor-trail {
+  background: radial-gradient(circle, var(--primary-color) 20%, var(--secondary-color) 80%);
+  opacity: 0.8;
+  border-radius: 50%;
+  pointer-events: none;
+  position: fixed;
+  z-index: 10000;
+}
+
+/* ======================
+   Controls (Volume, Theme)
+   ====================== */
+.controls {
+  position: fixed;
+  bottom: calc(50% - 280px - 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  display: flex;
+  gap: 6px;
+  background: rgba(0,0,0,0.7);
+  padding: 4px 8px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+.theme-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  background-color: rgba(0,0,0,0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.theme-button:hover {
+  transform: scale(1.1);
+  border-color: rgba(255,255,255,0.8);
+}
+
+/* ======================
+   Leave a Message Popup
+   ====================== */
 #message-popup {
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: var(--background-dark);
-  color: var(--text-color);
+  width: 360px;
+  max-width: 90vw;
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
   padding: 20px;
-  border: 2px solid var(--text-color);
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  z-index: 1000;
+  border-radius: 15px;
+  display: none;
+  z-index: 10001;
+  text-align: center;
 }
 
-#message-popup h2 {
-  margin-bottom: 10px;
-}
-
-#message-text {
+#message-popup textarea {
   width: 100%;
   height: 100px;
-  background: var(--background-dark);
-  color: var(--text-color);
-  border: 1px solid var(--text-color);
+  background: #111;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
   resize: none;
 }
 
-.popup-buttons {
-  display: flex;
-  justify-content: space-between;
+#message-popup button {
+  margin-top: 10px;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
+
+#message-popup button:hover {
+  background: #ccc;
+}
+
+/* ======================
+   Leave a Message Styles
+   ====================== */
+#message-popup textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  border: 1px solid #999;
+  padding: 8px;
+  resize: none;
+  background: #000;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+}
+
+#message-popup .country-label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+#message-popup .submit-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#message-popup .submit-btn:hover {
+  background: #ccc;
+}
+
+/* ======================
+   Cursor Trail (optional)
+   ====================== */
+.cursor-trail {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
+  background: #fff;
+}
+
+/* ======================
+   Miscellaneous Overlays
+   ====================== */
+#overlay-dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 9998;
+  display: none;
+}
+
+#overlay-dark.active {
+  display: block;
+}
+
+/* ======================
+   Animations for Popup
+   ====================== */
+@keyframes popupFade {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+#message-popup.active {
+  animation: popupFade 0.3s ease-out forwards;
+}
+
