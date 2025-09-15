@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  const name = "prnc";
+  const name = "@prcv1n";
   let nameText = '';
   let nameIndex = 0;
   let isNameDeleting = false;
