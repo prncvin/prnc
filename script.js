@@ -669,66 +669,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   typeWriterStart();
 });
+<script>
+const leaveBtn = document.getElementById('leave-message-btn');
+const popup = document.getElementById('message-popup');
+const closeBtn = document.getElementById('close-popup-btn');
+const sendBtn = document.getElementById('send-message-btn');
+const messageInput = document.getElementById('user-message');
 
-#message-form-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-  font-family: 'Space Mono', monospace;
+leaveBtn.addEventListener('click', () => {
+  popup.classList.toggle('hidden');
+});
+
+closeBtn.addEventListener('click', () => {
+  popup.classList.add('hidden');
+});
+
+// Function to get visitor country using free API
+async function getVisitorCountry() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    return data.country_name || 'Unknown';
+  } catch {
+    return 'Unknown';
+  }
 }
 
-#leave-message-btn {
-  background: black;
-  color: white;
-  border: 2px solid white;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-}
+sendBtn.addEventListener('click', async () => {
+  const message = messageInput.value.trim();
+  if (!message) return alert("Please write a message!");
 
-#leave-message-btn:hover {
-  background: white;
-  color: black;
-}
+  const country = await getVisitorCountry();
 
-#message-popup {
-  position: absolute;
-  bottom: 50px;
-  right: 0;
-  background: white;
-  color: black;
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+  const webhookURL = "YOUR_DISCORD_WEBHOOK_URL_HERE";
 
-#message-popup textarea {
-  width: 250px;
-  height: 80px;
-  padding: 6px;
-  border: 1px solid black;
-  border-radius: 4px;
-  resize: none;
-}
-
-#message-popup button {
-  padding: 6px 10px;
-  border: 1px solid black;
-  border-radius: 4px;
-  cursor: pointer;
-  background: black;
-  color: white;
-}
-
-#message-popup button:hover {
-  background: white;
-  color: black;
-}
-
-.hidden {
-  display: none;
-}
+  fetch(webhookURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content: `Message: ${message}\nCountry: ${country}`
+    })
+  }).then(() => {
+    alert("Message sent!");
+    messageInput.value = "";
+    popup.classList.add('hidden');
+  }).catch(() => {
+    alert("Failed to send message.");
+  });
+});
+</script>
