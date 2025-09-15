@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "@prcv1n, everywhere.",
+    "@prcv1n ON ALL SOCIALS.",
     "\"Hello, World!\""
   ];
   let bioText = '';
