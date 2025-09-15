@@ -1,88 +1,37 @@
-:root {
-  --primary-color: #fff;
-  --secondary-color: #000;
-  --background-dark: #000;
-  --text-color: #fff;
-}
+const leaveBtn = document.getElementById('leave-message-btn');
+const popup = document.getElementById('message-popup');
+const closeBtn = document.getElementById('close-popup-btn');
+const sendBtn = document.getElementById('send-message-btn');
+const messageText = document.getElementById('message-text');
 
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+leaveBtn.addEventListener('click', () => {
+  popup.style.display = 'block';
+});
 
-body {
-  font-family: 'Space Mono', monospace;
-  background: var(--background-dark);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-}
+closeBtn.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
 
-/* Main content */
-#main-content h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
+sendBtn.addEventListener('click', async () => {
+  const message = messageText.value.trim();
+  if (!message) return alert('Please write a message.');
 
-#main-content p {
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
+  // Get country info
+  const response = await fetch('https://ipapi.co/json/');
+  const data = await response.json();
+  const country = data.country_name || "Unknown";
 
-/* Buttons */
-button {
-  padding: 10px 20px;
-  background: var(--text-color);
-  color: var(--background-dark);
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
+  // Discord webhook payload
+  const webhookURL = 'YOUR_WEBHOOK_URL_HERE';
+  await fetch(webhookURL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      content: `**Anonymous Message** from ${country}:\n${message}`
+    })
+  });
 
-button:hover {
-  opacity: 0.8;
-}
-
-/* Message Popup */
-#message-popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--background-dark);
-  color: var(--text-color);
-  padding: 20px;
-  border: 2px solid var(--text-color);
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  z-index: 1000;
-}
-
-#message-popup h2 {
-  margin-bottom: 10px;
-}
-
-#message-text {
-  width: 100%;
-  height: 100px;
-  background: var(--background-dark);
-  color: var(--text-color);
-  border: 1px solid var(--text-color);
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  resize: none;
-}
-
-.popup-buttons {
-  display: flex;
-  justify-content: space-between;
-}
+  alert('Message sent!');
+  messageText.value = '';
+  popup.style.display = 'none';
+});
