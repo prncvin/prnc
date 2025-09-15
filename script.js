@@ -9,7 +9,7 @@ function initMedia() {
     return;
   }
   backgroundMusic.volume = 0.3;
-  backgroundVideo.muted = true; 
+  backgroundVideo.muted = false; 
 
   
   backgroundVideo.play().catch(err => {
