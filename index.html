@@ -926,20 +926,41 @@
 
             <div class="profile-footer">
 
-                <div class="social-links">
-                    <a href="https://discord.com/channels/@me/1407203571421806669" target="_blank">
-                        <img src="https://files.catbox.moe/ttfy3v.png" alt="Discord" class="social-icon">
-                    </a>
-                    <a href="https://rentry.co/tn6gwa67" target="_blank">
-                        <img src="https://files.catbox.moe/ghimeg.png" alt="Bitcoin" class="social-icon">
-                    </a>
-                    <a href="https://guns.lol/@prcv1n" target="_blank">
-                        <img src="https://files.catbox.moe/qlrytb.png" alt="Guns" class="social-icon">
-                    </a>
-                    <a href="https://github.com/prncvin" target="_blank">
-                        <img src="https://files.catbox.moe/466fj3.png" alt="GitHub" class="social-icon">
-                    </a>
-                </div>
+<div class="social-links">
+    <a href="#" onclick="copyText('@prncvin')">
+        <img src="https://r2.guns.lol/5a8a2b34-8d0f-484b-820f-c4fb6edf73c2.webp" alt="Discord" class="social-icon">
+    </a>
+    <a href="#" onclick="copyText('dm for custom website')">
+        <img src="https://r2.guns.lol/e0cce435-4aa5-4b98-9b89-ad5686a17388.webp" alt="Bitcoin" class="social-icon">
+    </a>
+    <a href="#" onclick="copyText('send me crypto')">
+        <img src="https://r2.guns.lol/d58cf46f-f331-4997-a8f1-0c7985dbd3a8.gif" alt="Guns" class="social-icon">
+    </a>
+    <a href="#" onclick="copyText('ltc -> ltc1qtp9t0km9mvf2uexyp9l2fn8mkgvskkaqwynegq')">
+        <img src="https://r2.guns.lol/e7a0eae4-ddee-49ba-aaaa-f19e6d17dd2b.webp" alt="GitHub" class="social-icon">
+    </a>
+    <a href="#" onclick="copyText('hi')">
+        <img src="https://r2.guns.lol/a800de2f-855c-4210-a864-a57ed355c843.webp" alt="Twitter" class="social-icon">
+    </a>
+    <a href="#" onclick="copyText('stalker')">
+        <img src="https://r2.guns.lol/a08f55bc-8b16-46a1-a3d8-cb88f97416ef.webp" alt="Instagram" class="social-icon">
+    </a>
+    <a href="#" onclick="copyText('https://guns.lol/prncvin')">
+        <img src="https://r2.guns.lol/34dad521-62d2-4714-bf56-485b8b9f4441.webp" alt="TikTok" class="social-icon">
+    </a>
+</div>
+
+<script>
+function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Copied: ' + text);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
+
+
 
 
                 <div class="visitor-counter">
