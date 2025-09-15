@@ -4,85 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@prcv1n Profile</title>
-  <style>
-    /* 🎵 Music Player Styling */
-    .music-player {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 320px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 15px;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-      z-index: 50;
-      backdrop-filter: blur(8px);
-      color: white;
-      font-family: 'Courier New', monospace;
-    }
-
-    .music-cover {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-
-    .music-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .play-btn, .volume-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: white;
-      font-size: 18px;
-    }
-
-    .progress-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: white;
-    }
-
-    .progress-bar {
-      flex: 1;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 4px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 2px;
-      cursor: pointer;
-    }
-
-    .progress-bar::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: white;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="home-theme">
 
-  <!-- Your other content (profile, buttons, etc.) goes here -->
+  <!-- 🔥 Your original content -->
+  <div class="container">
+    <header>
+      <h1>@prcv1n</h1>
+      <p>Welcome to my profile</p>
+    </header>
 
-  <!-- 🎵 New Music Player -->
+    <main>
+      <div class="button-grid">
+        <!-- keep all your copy buttons here -->
+        <button class="copy-btn" data-text="@prncvin">
+          <img src="https://r2.guns.lol/5a8a2b34-8d0f-484b-820f-c4fb6edf73c2.webp" alt="Discord">
+        </button>
+        <button class="copy-btn" data-text="dm for custom website">
+          <img src="https://r2.guns.lol/e0cce435-4aa5-4b98-9b89-ad5686a17388.webp" alt="Website">
+        </button>
+        <button class="copy-btn" data-text="send me crypto">
+          <img src="https://r2.guns.lol/d58cf46f-f331-4997-a8f1-0c7985dbd3a8.gif" alt="Crypto">
+        </button>
+        <button class="copy-btn" data-text="ltc -> ltc1qtp9t0km9mvf2uexyp9l2fn8mkgvskkaqwynegq">
+          <img src="https://r2.guns.lol/e7a0eae4-ddee-49ba-aaaa-f19e6d17dd2b.webp" alt="LTC">
+        </button>
+        <button class="copy-btn" data-text="hi">
+          <img src="https://r2.guns.lol/a800de2f-855c-4210-a864-a57ed355c843.webp" alt="Hi">
+        </button>
+        <button class="copy-btn" data-text="stalker">
+          <img src="https://r2.guns.lol/a08f55bc-8b16-46a1-a3d8-cb88f97416ef.webp" alt="Stalker">
+        </button>
+        <button class="copy-btn" data-text="https://guns.lol/prncvin">
+          <img src="https://r2.guns.lol/34dad521-62d2-4714-bf56-485b8b9f4441.webp" alt="Guns.lol">
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- 🚫 removed the 1–5 theme buttons -->
+
+  <!-- 🎵 Music Player -->
   <div class="music-player">
     <img class="music-cover" src="https://r2.guns.lol/f28855c2-924e-432e-ad13-2c63d3f343b1.webp" alt="Cover">
     <div class="music-controls">
@@ -96,9 +59,10 @@
     </div>
   </div>
 
-  <!-- 🎵 Your MP3 file (autoplays muted at start) -->
+  <!-- 🎵 Audio -->
   <audio id="music" src="https://files.catbox.moe/w32wh8.mp3" autoplay muted></audio>
 
+  <script src="script.js"></script>
   <script>
     const music = document.getElementById("music");
     const playBtn = document.getElementById("play-btn");
@@ -107,14 +71,12 @@
     const currentTimeEl = document.getElementById("current-time");
     const durationEl = document.getElementById("duration");
 
-    // Format time helper
     function formatTime(seconds) {
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
       return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
     }
 
-    // Play / Pause
     playBtn.addEventListener("click", () => {
       if (music.paused) {
         music.play();
@@ -125,30 +87,25 @@
       }
     });
 
-    // Volume toggle
     volumeBtn.addEventListener("click", () => {
       music.muted = !music.muted;
       volumeBtn.textContent = music.muted ? "🔈" : "🔊";
     });
 
-    // Update progress bar
     music.addEventListener("timeupdate", () => {
       const progress = (music.currentTime / music.duration) * 100;
       progressBar.value = progress || 0;
       currentTimeEl.textContent = formatTime(music.currentTime);
     });
 
-    // Update duration when loaded
     music.addEventListener("loadedmetadata", () => {
       durationEl.textContent = formatTime(music.duration);
     });
 
-    // Seek
     progressBar.addEventListener("input", () => {
       music.currentTime = (progressBar.value / 100) * music.duration;
     });
 
-    // ✅ Unmute after first click anywhere
     document.addEventListener("click", () => {
       music.muted = false;
     }, { once: true });
