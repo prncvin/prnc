@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "@prcv1n ON ALL SOCIALS.",
+    "known as prince/vin, @prcv1n, 16 year old coder for fun on free time, ",
     "\"Hello, World!\""
   ];
   let bioText = '';
