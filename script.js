@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  const startMessage = ", enter?";
+  const startMessage = "click anywhere to enter";
   let startTextContent = '';
   let startIndex = 0;
   let startCursorVisible = true;
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "website made in early 2025, last edited 03/10/25",
+    "if you want a website like this, dm me, 10$ /only crypto,
     "\"Hello, World!\""
   ];
   let bioText = '';
