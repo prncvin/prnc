@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  const startMessage = "@prcv1n, enter?";
+  const startMessage = ", enter?";
   let startTextContent = '';
   let startIndex = 0;
   let startCursorVisible = true;
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  const name = "@prcv1n";
+  const name = "@prince";
   let nameText = '';
   let nameIndex = 0;
   let isNameDeleting = false;
