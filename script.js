@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "if you want a website like this, dm me, 10$ /only crypto,
+    "if you want a website like this, dm me, 10$ /only crypto",
     "\"Hello, World!\""
   ];
   let bioText = '';
